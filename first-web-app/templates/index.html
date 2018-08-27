@@ -1,0 +1,10 @@
+$def with (name)
+$# Note that the def line must be the first line in the file.
+$# 'name' is a variable passed to the template.
+$# All python code and variables must be prefixed by $.
+
+$if name:
+	I just wanted to say <em>hello</em> to $name.
+$else:
+	<em>Hello</em>, world!
+
