@@ -7,6 +7,7 @@
 			border-style:solid ;
 			height:100px;
 			width:100px;
+			font-size:0px;
 		}
 		.row {
 			display: flex;
@@ -19,19 +20,30 @@
 <body>
 	<div class='row'>
 	
-		<input type="button" id="button1" value="Search1" onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button2" value="Search1" onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button3" value="Search1" onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button4" value="Search1" onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button5" value="Search1" onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button6" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button1" value=0 onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button2" value=0 onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button3" value=0 onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button4" value=0 onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button5" value=0 onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button6" value=0 onclick="changeBackground(this)" class="button"/>
 
 	</div>
 
 	<script>
 		function changeBackground(b) {
 			//console.log('test')
-			document.getElementById(b.id).style.backgroundColor="red";
+			var button_color = document.getElementById(b.id).style.backgroundColor
+			var button_value = document.getElementById(b.id).value
+			
+			if (button_color == "green") {
+				button_color = "red"; button_value = 1;
+			} else {
+				button_color = "green"; button_value = 0;
+			}
+			document.getElementById(b.id).style.backgroundColor = button_color
+			document.getElementById(b.id).value = button_value
+
+			console.log(document.getElementById(b.id).value)
 		}
 	</script>
 
