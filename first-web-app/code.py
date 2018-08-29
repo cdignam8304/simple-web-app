@@ -15,7 +15,8 @@ render = web.template.render("templates/")
 urls = (
         # "/(.*)", "index",
         "/home/(.*)", "index",
-        "/challenge", "challenge"
+        "/challenge", "challenge",
+        "/challenge2", "challenge2"
         )
 
 # classes:
@@ -36,6 +37,10 @@ class index:
 class challenge:
     def GET(self):
         return render.challenge()
+
+class challenge2:
+    def GET(self):
+        return render.challenge2()
 
 if __name__ == "__main__":
     app = web.application(urls, globals())

@@ -1,0 +1,38 @@
+<head>
+	<style type="text/css">
+		.button{
+			background: url("/static/test-image2.png") no-repeat;
+			background-color: green; /* Green */
+			cursor:pointer;
+			border-style:solid ;
+			height:100px;
+			width:100px;
+		}
+		.row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	</style>
+</head>
+
+<body>
+	<div class='row'>
+	
+		<input type="button" id="button1" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button2" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button3" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button4" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button5" value="Search1" onclick="changeBackground(this)" class="button"/>
+		<input type="button" id="button6" value="Search1" onclick="changeBackground(this)" class="button"/>
+
+	</div>
+
+	<script>
+		function changeBackground(b) {
+			//console.log('test')
+			document.getElementById(b.id).style.backgroundColor="red";
+		}
+	</script>
+
+</body>

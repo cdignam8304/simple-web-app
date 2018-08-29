@@ -6,22 +6,17 @@
 
 <body>
 
-	<p>Here is some body text in the challenge html template.</p>
-	<input id="input1" type="image" src="static/test-image.png" style="width:150px;height:150px;" />
-
-	<button id="myButton" type="button" onclick="myFunction2()">Click me</button>
-
-	<p id="myText"></p>
+	<!-- <input id="myButton" type="button" onclick="change()" value="Close Curtain"></input> -->
+	<input id="myButton" type="button" onclick="change()" background-image:url(static/test-image.png)>
 
 	<script>
-		function myFunction() {
-			document.getElementById("demo").style.color="red";
+
+		function change() {
+			var elem = document.getElementById("myButton");
+			if (elem.background-image=="static/test-image.png") elem.background-image="static/test-image2.png";
+			else elem.background-image="static/test-image.png";
 		}
 
-		function myFunction2()  {
-			var text = document.getElementById("myButton").firstChild; 
-			text.data = text.data == "Lock" ? "Unlock" : "Lock";
-		}
 	</script>
  
 </body>
