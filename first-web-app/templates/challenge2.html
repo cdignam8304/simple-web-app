@@ -1,49 +1,70 @@
+$def with (num_tiles)
+
 <head>
+	
+	<em>THIS IS THE HTML HEADER</em>
+	<br>	
+	$num_tiles
+	<br>
+	<br>
+
 	<style type="text/css">
-		.button{
-			background: url("/static/test-image2.png") no-repeat;
-			background-color: green; /* Green */
-			cursor:pointer;
-			border-style:solid ;
-			height:100px;
-			width:100px;
-			font-size:0px;
-		}
+		
 		.row {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 		}
+
+		.button{
+			background-color: green;
+			cursor: pointer;
+			border-style: solid;
+			height: 100px;
+			width: 100px;
+			font-size: 10px; /* change this to 0 later when using images  */
+		}
+
 	</style>
+
 </head>
 
 <body>
-	<div class='row'>
+	<em>THIS IS THE HTML BODY</em>
 	
-		<input type="button" id="button1" value=0 onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button2" value=0 onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button3" value=0 onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button4" value=0 onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button5" value=0 onclick="changeBackground(this)" class="button"/>
-		<input type="button" id="button6" value=0 onclick="changeBackground(this)" class="button"/>
-
+	<div class="row">
+		$for i in range(num_tiles):
+			$code:
+				id = "button%d" % i
+			<input type="button" value=0 id=$id onclick="selectItem(this)" class="button">
 	</div>
 
-	<script>
-		function changeBackground(b) {
-			//console.log('test')
-			var button_color = document.getElementById(b.id).style.backgroundColor
-			var button_value = document.getElementById(b.id).value
-			
-			if (button_color == "green") {
-				button_color = "red"; button_value = 1;
-			} else {
-				button_color = "green"; button_value = 0;
-			}
-			document.getElementById(b.id).style.backgroundColor = button_color
-			document.getElementById(b.id).value = button_value
 
-			console.log(document.getElementById(b.id).value)
+	<script>
+		var select_count = 0 //to store total number of tiles currently selected
+		
+		// Determine what happens when a tile is clicked
+		function selectItem(b) {
+			var doc = document.getElementById(b.id)
+			var button_color = doc.style.backgroundColor
+			var button_value = doc.value
+
+			if (button_value==0) {
+				button_color="red"; button_value=1; select_count++
+			} else {
+				button_color="green"; button_value=0; select_count--
+			}
+			doc.style.backgroundColor = button_color
+			doc.value = button_value
+
+			// Print out tile values and total selected to the browser console
+			console.log(doc.value)
+			console.log(select_count)
+
+			// Show alert if user selects more than 5 items
+			if (select_count > 5) {
+				alert("More than maximum number of 5 tiles selected!");
+			}
 		}
 	</script>
 

@@ -39,8 +39,10 @@ class challenge:
         return render.challenge()
 
 class challenge2:
+    
     def GET(self):
-        return render.challenge2()
+        num_tiles = 100
+        return render.challenge2(num_tiles)
 
 if __name__ == "__main__":
     app = web.application(urls, globals())

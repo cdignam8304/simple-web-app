@@ -1,24 +1,62 @@
-<html>
-
 <head>
-	<link rel="stylesheet" href="static/challenge.css">
+	<style type="text/css">
+		/* style tiles in the grid */
+		.button{
+			background: url("/static/test-image2.png") no-repeat;
+			background-color: green; /* Green */
+			cursor:pointer;
+			border-style:solid ;
+			height:100px;
+			width:100px;
+			font-size:0px;
+		}
+
+		/* style the grid */
+		.row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	</style>
+
 </head>
 
 <body>
-
-	<!-- <input id="myButton" type="button" onclick="change()" value="Close Curtain"></input> -->
-	<input id="myButton" type="button" onclick="change()" background-image:url(static/test-image.png)>
+	<div class='row'>
+		<!-- Create tiles on the grid  -->	
+		<input type="button" id="button1" value=0 onclick="selectItem(this)" class="button"/>
+		<input type="button" id="button2" value=0 onclick="selectItem(this)" class="button"/>
+		<input type="button" id="button3" value=0 onclick="selectItem(this)" class="button"/>
+		<input type="button" id="button4" value=0 onclick="selectItem(this)" class="button"/>
+		<input type="button" id="button5" value=0 onclick="selectItem(this)" class="button"/>
+		<input type="button" id="button6" value=0 onclick="selectItem(this)" class="button"/>
+	</div>
 
 	<script>
+		var select_count = 0 //to store total number of tiles currently selected
+		
+		// Define what happens when a tile is clicked
+		function selectItem(b) {
+			var button_color = document.getElementById(b.id).style.backgroundColor
+			var button_value = document.getElementById(b.id).value
+			
+			if (button_value == 0) {
+				button_color = "red"; button_value = 1; select_count++
+			} else {
+				button_color = "green"; button_value = 0; select_count--
+			}
+			document.getElementById(b.id).style.backgroundColor = button_color
+			document.getElementById(b.id).value = button_value
+			
+			// Print out tile values and total selected to the browser console
+			console.log(document.getElementById(b.id).value)
+			console.log(select_count)
 
-		function change() {
-			var elem = document.getElementById("myButton");
-			if (elem.background-image=="static/test-image.png") elem.background-image="static/test-image2.png";
-			else elem.background-image="static/test-image.png";
+			// Show alert if user selects more than 5 items
+			if (select_count > 5) {
+				alert("Maximum of 5 selections exceeded!");
+			}
 		}
-
 	</script>
- 
-</body>
 
-</html>
+</body>
