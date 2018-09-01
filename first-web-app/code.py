@@ -34,15 +34,12 @@ class index:
         i = web.input(name=None)
         return render.index(name)
 
-class challenge:
-    def GET(self):
-        return render.challenge()
 
-class challenge2:
+class challenge:
     
     def GET(self):
-        num_tiles = 100
-        return render.challenge2(num_tiles)
+        num_tiles = 9
+        return render.challenge(num_tiles)
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
