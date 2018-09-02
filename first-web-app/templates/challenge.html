@@ -17,7 +17,7 @@ $def with (num_tiles)
 		}
 
 		.button{
-			background: url(static/lion.jpeg);
+			/* background: url(static/lion.jpeg);*/
 			/*background-color: green;*/
 			cursor: pointer;
 			border-style: solid;
@@ -46,10 +46,12 @@ $def with (num_tiles)
 	<em>THIS IS THE HTML BODY</em>
 	
 	<div class="row">
+		
 		$for i in range(num_tiles):
 			$code:
 				id = "button%d" % i
-			<input type="button" value=0 id=$id onclick="selectItem(this)" class="button">
+
+			<input type="button" style="background: url(static/lion.jpeg)" value=0 id=$id onclick="selectItem(this)" class="button">
 	</div>
 
 

@@ -16,7 +16,7 @@ urls = (
         # "/(.*)", "index",
         "/home/(.*)", "index",
         "/challenge", "challenge",
-        "/challenge2", "challenge2"
+        "/countdown", "countdown"
         )
 
 # classes:
@@ -40,6 +40,13 @@ class challenge:
     def GET(self):
         num_tiles = 9
         return render.challenge(num_tiles)
+
+
+class countdown:
+
+    def GET(self):
+        return render.countdown()
+
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
